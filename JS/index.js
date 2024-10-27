@@ -1,6 +1,6 @@
 let mealsData = document.getElementById('mealsData');
 let searchData = document.getElementById('search');
-let submit ;
+let submitbtn ;
 
 $(document).ready(function(){
     getMealsByName("").then(function(){
@@ -352,31 +352,34 @@ function displayContact(){
             </div>
     `
     mealsData.innerHTML = conntainner ;
-    submit = document.getElementById('submit')
-    document.getElementById("nameInput").addEventListener("focus", function(){
-        nameInputTouched = true
-    })
 
-    document.getElementById("emailInput").addEventListener("focus", function(){
-        emailInputTouched = true
+    submitbtn = document.getElementById('submit')
+    document.getElementById("nameinput").addEventListener("focus", function(){
+        nameInputFocused = true
     })
-
-    document.getElementById("phoneInput").addEventListener("focus", function(){
-        phoneInputTouched = true
+    
+    document.getElementById("emailinput").addEventListener("focus", function(){
+        emailInputFocused = true
     })
-
-    document.getElementById("ageInput").addEventListener("focus", function(){
-        ageInputTouched = true
+    
+    document.getElementById("phoneinput").addEventListener("focus", function(){
+        phoneInputFocused = true
     })
-
-    document.getElementById("passwordInput").addEventListener("focus", function(){
-        passwordInputTouched = true
+    
+    document.getElementById("ageinput").addEventListener("focus", function(){
+        ageInputFocused = true
     })
-
-    document.getElementById("repasswordInput").addEventListener("focus", function(){
-        repasswordInputTouched = true
+    
+    document.getElementById("passinput").addEventListener("focus", function(){
+        passwordInputFocused = true
     })
+    
+    document.getElementById("repassinput").addEventListener("focus", function(){
+        repasswordInputFocused = true
+    })
+    
 }
+
 
 let nameInputFocused = false;
 let emailInputFocused = false;
@@ -425,7 +428,7 @@ function inputValidation(){
     }
 
     if (passwordInputFocused) {
-        if (passwordValidation()) {
+        if (passValidation()) {
             document.getElementById("passwordAlert").classList.replace("d-block", "d-none")
         } else {
             document.getElementById("passwordAlert").classList.replace("d-none", "d-block")
@@ -433,7 +436,7 @@ function inputValidation(){
         }
     }
     if (repasswordInputFocused) {
-        if (repasswordValidation()) {
+        if (repassValidation()) {
             document.getElementById("repasswordAlert").classList.replace("d-block", "d-none")
         } else {
             document.getElementById("repasswordAlert").classList.replace("d-none", "d-block")
@@ -448,9 +451,9 @@ function inputValidation(){
         passValidation()&&
         repassValidation()
     ){
-        submit.removeAttribute("disabled")
+        submitbtn.removeAttribute("disabled")
     }else{
-        submit.setAttribute("disabled",true)
+        submitbtn.setAttribute("disabled",true)
     }
 }
 
